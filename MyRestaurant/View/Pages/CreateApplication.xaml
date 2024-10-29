@@ -1,0 +1,73 @@
+﻿<Page x:Class="MyRestaurant.View.Pages.CreateApplication"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:MyRestaurant.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateApplication" Style="{StaticResource pageStyle}">
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource pageTextBlock}" Text="Категория"/>
+                    <ComboBox Style="{StaticResource pageCombobox}" Width="195" ItemsSource="{Binding Path=Categories, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                          SelectedItem="{Binding SelectedCategory}" IsSynchronizedWithCurrentItem="True" IsEnabled="{Binding EnableCategory}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding CategoryChanged}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource pageTextBlock}" Text="Производитель"/>
+                    <ComboBox Style="{StaticResource pageCombobox}" Width="195" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier}"
+                          IsSynchronizedWithCurrentItem="True" IsEnabled="{Binding EnableSupplier}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SupplierChanged}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <DataGrid Style="{StaticResource pageDataGrid}" Width="400" Height="300" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding NameProduct}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding NameCategory}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Поставщик" Binding="{Binding NameSupplier}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Margin="20 0 0 0" Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource pageTextBlock}" Text="Количество"/>
+                <TextBox Style="{StaticResource pageTextBox}" Width="50" Text="{Binding ProductsCount}"/>
+                <Button Style="{StaticResource pageButtons}" Width="50" Command="{Binding AddProduct}">+</Button>
+            </StackPanel>
+            
+            <DataGrid Style="{StaticResource pageDataGrid}" Height="220" Width="300" ItemsSource="{Binding ApplicationProducts}" SelectedItem="{Binding SelectedApplicationProduct, Mode=TwoWay}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding NameProduct}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Amount}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Поставщик" Binding="{Binding NameSupplier}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource pageButtons}" Content="Удалить из заявки" Command="{Binding DeleteApplicationProduct}"></Button>
+                <Button Style="{StaticResource pageButtons}" Width="120" Content="Заказать" Command="{Binding CreateApplication}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

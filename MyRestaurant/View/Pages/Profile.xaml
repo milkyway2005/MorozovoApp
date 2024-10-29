@@ -1,0 +1,24 @@
+﻿<Page x:Class="MyRestaurant.View.Pages.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyRestaurant.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Profile" Style="{StaticResource pageStyle}">
+
+    <Grid VerticalAlignment="Center"  HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Source="/Sourсes/LogoCircleNew.png"/>
+        <StackPanel Grid.Column="1" Margin="20 0 0 50" VerticalAlignment="Center" DataContext="{Binding CurrentEmployee}" >
+            <TextBlock Style="{StaticResource profile}" Text="{Binding FullName}"/>
+            <TextBlock Style="{StaticResource profile}" Text="{Binding PhoneNumber}"/>
+            <TextBlock Style="{StaticResource profile}" Text="{Binding NamePosition}"/>
+        </StackPanel>
+    </Grid>
+</Page>

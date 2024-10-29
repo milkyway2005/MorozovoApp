@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="loginTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="#6e322a"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="10 10 10 10"/>
+        <Style.Triggers>
+            <Trigger Property="TextBox.IsMouseOver" Value="False">
+                <Setter Property="BorderBrush" Value="#cea469"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="pageTextBox" TargetType="TextBox">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="#6e322a"/>
+        <Setter Property="Margin" Value="5 5 5 5"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="MyRestaurant.View.Windows.ControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyRestaurant.View.Windows"
+        xmlns:pg="clr-namespace:MyRestaurant.View.Pages"
+        mc:Ignorable="d"
+        Title="Ресторан" Height="600" Width="1050" 
+        Style="{StaticResource controlWindow}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource exitButton}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Выйти" Command="{Binding BackBtn_Click}"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Style="{StaticResource windowButtons}" Content="_" Command="{Binding ResizeWindow}"/>
+                <Button Style="{StaticResource windowButtons}" Content="x" Command="{Binding CloseWindow}"/>
+            </StackPanel>
+        </Grid>
+        <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,40 @@
+﻿<Page x:Class="MyRestaurant.View.Pages.UsersList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:MyRestaurant.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsersList" Style="{StaticResource pageStyle}">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+            <TextBlock Style="{StaticResource pageTextBlock}" Text="Должность" VerticalAlignment="Center"/>
+            <ComboBox Style="{StaticResource pageCombobox}" Width="428" ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding PositionChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <Button Style="{StaticResource pageButtons}" Width="150" Content="Удалить" Command="{Binding DeleteEmployee}"/>
+        </StackPanel>
+        <DataGrid Style="{StaticResource pageDataGrid}" Width="700" Height="300" Grid.Row="1" ItemsSource="{Binding Employees}" 
+          SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding NamePosition}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding PhoneNumber}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Паспорт" Binding="{Binding Passport}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,27 @@
+﻿<Page x:Class="MyRestaurant.View.Pages.ControlPageChef"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyRestaurant.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ControlPageChef">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="0 20 0 0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Style="{StaticResource controlButtons}" Content="Профиль" Command="{Binding ProfileBtn_Click}"/>
+            <Button Style="{StaticResource controlButtons}" Content="Склад продуктов" Command="{Binding ProductsStockBtn_Click}"/>
+            <Button Style="{StaticResource controlButtons}" Content="Составить заявку" Command="{Binding CreateApplicationBtn_Click}"/>
+            <Button Style="{StaticResource controlButtons}" Content="Поставки" Command="{Binding ProductsSuppliesBtn_Click}"/>
+            <Button Style="{StaticResource controlButtons}" Content="Сотрудники" Command="{Binding UsersListBtn_Click}"/>
+            <Button Style="{StaticResource controlButtons}" Content="Добавить сотрудника" Command="{Binding AddUserBtn_Click}"/>
+        </StackPanel>
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+    </Grid>
+</Page>

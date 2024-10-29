@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="pageCombobox" TargetType="ComboBox">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="#6e322a"/>
+        <Setter Property="Margin" Value="5 5 5 5"/>
+    </Style>
+</ResourceDictionary>

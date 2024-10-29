@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="loginWindow" TargetType="Window">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Sourсes/Logo.jpg"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="WindowStyle" Value="None"/>
+    </Style>
+
+    <Style x:Key="controlWindow" TargetType="Window">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Sourсes/FonLight.png"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="WindowStyle" Value="None"/>
+    </Style>
+
+    <Style x:Key="pageStyle" TargetType="Page">
+        <Setter Property="Background" Value="#91575a"/>
+    </Style>
+</ResourceDictionary>
